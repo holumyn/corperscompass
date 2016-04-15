@@ -1,0 +1,14 @@
+<IfModule mod_rewrite.c>
+    #Require all denied
+	
+	RewriteEngine On
+	
+	RewriteBase /cc/
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteCond $1 !^(index\.php|js|img|css|captcha|robots\.txt)
+	RewriteRule ^(.*)$ /cc/index.php/$1 [L]
+</IfModule>
+<IfModule !mod_rewrite.c>
+    Deny from all
+</IfModule>
